@@ -1,0 +1,9 @@
+h1{
+    color: rgb(16, 65, 48);
+    &:hover {
+        color: rebeccapurple;
+    }
+}
+.text {
+    text-decoration: line-through;
+}
