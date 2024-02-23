@@ -6,3 +6,4 @@ declare module '*.scss' {
     export = classNames;
 }
 declare module '*.css'
+declare module '*[FTName].module.scss'

@@ -1,0 +1,12 @@
+@import './reset.scss';
+@import './themes/dark.scss';
+@import './themes/normal.scss';
+@import './variables//global.scss';
+@import './themes//orange.scss';
+
+.app {
+    font: var(--font-m);
+    color: var(--primary-color);
+    background: var(--bg-color);
+    min-height: 100vh;
+}
