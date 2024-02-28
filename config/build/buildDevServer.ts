@@ -9,5 +9,6 @@ export function buildDevServer({paths, port}: BuildOptions): DevServerConfigurat
         },
         port,
         open: true,
+        historyApiFallback: true
     }
 }
