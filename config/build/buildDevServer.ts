@@ -4,11 +4,9 @@ import { Configuration as DevServerConfiguration } from "webpack-dev-server"
 
 export function buildDevServer({paths, port}: BuildOptions): DevServerConfiguration {
     return {
-        static: {
-            directory: paths.html,
-        },
         port,
         open: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot: true
     }
 }
