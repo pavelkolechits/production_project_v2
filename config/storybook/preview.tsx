@@ -6,56 +6,56 @@ import '../../src/app/styles/themes/dark.scss'
 import { Theme } from "../../src/shared";
 import { StoryContext } from "@storybook/types";
 const preview: Preview = {
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      defaultValue: 'app_normal_theme',
-      toolbar: {
-        title: 'Theme',
-        icon: 'circlehollow',
-        items: ['dark', 'normal', 'orange'],
-        dynamicTitle: true,
-      },
+    globalTypes: {
+        theme: {
+            description: 'Global theme for components',
+            defaultValue: 'app_normal_theme',
+            toolbar: {
+                title: 'Theme',
+                icon: 'circlehollow',
+                items: ['dark', 'normal', 'orange'],
+                dynamicTitle: true,
+            },
+        },
     },
-  },
-  decorators: [
-    (Story: StoryFn, context: StoryContext<ReactRenderer, Args>) => {
-      let selectedTheme = context.globals.theme || 'light';
-      let theme = 'app app_normal_theme'
-      switch (selectedTheme) {
-        case 'light': {
-          theme = 'app app_normal_theme'
-          break;
-        } 
-        case 'dark': {
-          theme = 'app app_dark_theme'
-          break;
-        } 
-        case 'orange': {
-          theme = 'app app_orange_theme'
-          break;
-        } 
-        default:
-          break;
-      }
-      return (
-        <div
-        className={theme}
-        >
-          <Story />
-        </div>
-      );
+    decorators: [
+        (Story: StoryFn, context: StoryContext<ReactRenderer, Args>) => {
+            let selectedTheme = context.globals.theme || 'light';
+            let theme = 'app app_normal_theme'
+            switch (selectedTheme) {
+            case 'light': {
+                theme = 'app app_normal_theme'
+                break;
+            } 
+            case 'dark': {
+                theme = 'app app_dark_theme'
+                break;
+            } 
+            case 'orange': {
+                theme = 'app app_orange_theme'
+                break;
+            } 
+            default:
+                break;
+            }
+            return (
+                <div
+                    className={theme}
+                >
+                    <Story />
+                </div>
+            );
+        },
+    ],
+    parameters: {
+        actions: { argTypesRegex: "^on[A-Z].*" },
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/i,
+            },
+        },
     },
-  ],
-  parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-  },
 
 };
 

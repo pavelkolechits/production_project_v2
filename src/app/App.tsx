@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 import { classNames } from 'shared/helpers/classNames/classNames'
 import './styles/index.scss'
 import { ThemeSwitcher } from 'feature/ThemeSwitcher'
@@ -17,7 +8,6 @@ import { LanguageSwitcher } from 'feature/LanguageSwitcher'
 import { Suspense } from 'react'
 
 export const App = () => {
-
     return <div className={classNames('app')}>
         <Suspense fallback=''>
             <Navbar />
@@ -28,4 +18,3 @@ export const App = () => {
 
     </div>
 }
-
