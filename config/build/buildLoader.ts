@@ -15,15 +15,12 @@ export function buildLoader({isDev}: BuildOptions): webpack.RuleSetRule[]  {
       }
 
       const babelLoader =  {
-        test: /\.(?:js|mjs|cjs)$/,
+        test: /\.(js|jsx|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ],
-            plugins: ['@babel/plugin-proposal-class-properties']
+            presets: ['@babel/preset-env']
           }
         }
       }
