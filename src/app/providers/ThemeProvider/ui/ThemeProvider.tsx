@@ -1,5 +1,6 @@
 import { type ReactNode, useEffect, useMemo, useState } from 'react'
-import { Theme, LOCAL_STORAGE_THEME_KEY, ThemeContext } from 'shared'
+import { LOCAL_STORAGE_THEME_KEY } from 'shared/consts/localStorage'
+import { Theme, ThemeContext } from 'shared/lib/ThemeContext/ThemeContext'
 
 interface ThemeProviderProps {
   children: ReactNode
