@@ -9,15 +9,7 @@ export interface AboutPageProps {
 const AboutPage = (props: AboutPageProps) => {
     const { } = props
     const { t } = useTranslation('about')
-
-    useEffect(() => {
-        throw new Error('error')
-    })
-
-      
-
-   
-
+    
     return <div className={cls.AboutPage}>
         {t('about')}
     </div>
