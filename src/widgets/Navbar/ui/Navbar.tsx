@@ -1,10 +1,9 @@
 import cls from './Navbar.module.scss'
 import { useTranslation } from 'react-i18next'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { classNames } from 'shared/helpers/classNames/classNames'
-import { Modal } from 'shared/ui/Modal/Modal';
 import { useCallback, useState } from 'react';
 import { Button } from 'shared/ui/Button/Button';
+import { LoginModal } from 'feature/AuthByUsername';
 
 export interface NavbarProps {
     className?: string;
@@ -27,7 +26,7 @@ export const Navbar = (props: NavbarProps) => {
             <Button className={cls.enterBtn} theme="clear" onClick={onShowModal}>
                 {t('Войти')}
             </Button>
-            <Modal isOpen={isAuthModal} onClose={onCloseModal} />
+            <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
         </header>
     )
 }
