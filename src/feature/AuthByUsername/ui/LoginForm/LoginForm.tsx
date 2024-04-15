@@ -3,8 +3,8 @@ import { Button } from "shared/ui/Button/Button"
 import cls from './LoginForm.module.scss'
 import { Input } from "shared/ui/Input/Input"
 import { classNames } from "shared/helpers/classNames/classNames"
-import { useSelector } from "react-redux"
-import { useCallback } from "react"
+import { useSelector, useStore } from "react-redux"
+import { memo, useCallback, useEffect } from "react"
 import { getLoginUsername } from '../../model/selectors/getLoginData';
 import { getLoginPassword } from '../../model/selectors/getLoginData';
 import { getLoginError } from '../../model/selectors/getLoginData';
@@ -13,15 +13,18 @@ import { loginActions, loginReducer } from '../../model/slices/loginSlice';
 import { useAppDispatch } from "shared/hooks/useAppDispatch/useAppDispatch"
 import { loginByUsername } from "../../model/servises/loginByUsername/loginByUsername"
 import { userActions, userReducer } from "entities/User"
+import { ReduxStoreWithManager } from "app/providers/StoreProvider/config/StateSchema"
+import { useAsyncRedusers } from "shared/hooks/useAsyncReducers/useAsyncRedusers"
 
 
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string;
     onSuccess?: () => void;
 }
 
-export const LoginForm  = (props: LoginFormProps) => {
+const LoginForm  = (props: LoginFormProps) => {
+    const store = useStore() as ReduxStoreWithManager
     const { className } = props
     const { t } = useTranslation()
     const dispatch = useAppDispatch();
@@ -29,6 +32,8 @@ export const LoginForm  = (props: LoginFormProps) => {
     const password = useSelector(getLoginPassword);
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginIsLoading);
+
+    useAsyncRedusers({reducers:{loginForm: loginReducer}, removeAfterUnmount: true})
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
@@ -73,3 +78,4 @@ export const LoginForm  = (props: LoginFormProps) => {
         </div>
     )
 }
+export default memo(LoginForm)
