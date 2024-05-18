@@ -3,8 +3,8 @@ import { ThemeProvider } from '../../src/app/providers/ThemeProvider/ui/ThemePro
 import React from "react";
 import '../../src/app/styles/index.scss'
 import '../../src/app/styles/themes/dark.scss'
-import { Theme } from "../../src/shared";
 import { StoryContext } from "@storybook/types";
+import { BrowserRouter } from "react-router-dom";
 const preview: Preview = {
     globalTypes: {
         theme: {
@@ -44,6 +44,15 @@ const preview: Preview = {
                 >
                     <Story />
                 </div>
+            );
+        },
+        (Story: StoryFn, context: StoryContext<ReactRenderer, Args>) => {
+
+            return (
+                <BrowserRouter
+                >
+                    <Story />
+                </BrowserRouter>
             );
         },
     ],

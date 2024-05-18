@@ -1,6 +1,6 @@
 import themeDark from 'shared/assets/icons/themeDark.svg';
 import themeLight from 'shared/assets/icons/themeLight.svg';
-import { memo } from 'react';
+import { MemoExoticComponent, memo } from 'react';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Button } from 'shared/ui/Button/Button';
 import { useTheme } from 'shared/hooks/useTheme/useTheme';
@@ -13,7 +13,7 @@ interface ThemeSwitherProps {
 }
 
 
-export const ThemeSwitcher = memo(({ className }: ThemeSwitherProps) => {
+export const ThemeSwitcher = ({ className }: ThemeSwitherProps) => {
     const { theme, toggleTheme } = useTheme();
     return (
         <Button
@@ -26,4 +26,4 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitherProps) => {
             
         </Button>
     );
-});
+};
