@@ -1,10 +1,12 @@
 import type { Args, Preview, ReactRenderer, Story, StoryFn } from "@storybook/react";
 import { ThemeProvider } from '../../src/app/providers/ThemeProvider/ui/ThemeProvider'
-import React from "react";
+import React, { Suspense, useEffect } from "react";
 import '../../src/app/styles/index.scss'
 import '../../src/app/styles/themes/dark.scss'
 import { StoryContext } from "@storybook/types";
 import { BrowserRouter } from "react-router-dom";
+import { StoreProvider } from '../../src/app/providers/StoreProvider/ui/StoreProvider'
+
 const preview: Preview = {
     globalTypes: {
         theme: {
@@ -23,20 +25,20 @@ const preview: Preview = {
             let selectedTheme = context.globals.theme || 'light';
             let theme = 'app app_normal_theme'
             switch (selectedTheme) {
-            case 'light': {
-                theme = 'app app_normal_theme'
-                break;
-            } 
-            case 'dark': {
-                theme = 'app app_dark_theme'
-                break;
-            } 
-            case 'orange': {
-                theme = 'app app_orange_theme'
-                break;
-            } 
-            default:
-                break;
+                case 'light': {
+                    theme = 'app app_normal_theme'
+                    break;
+                }
+                case 'dark': {
+                    theme = 'app app_dark_theme'
+                    break;
+                }
+                case 'orange': {
+                    theme = 'app app_orange_theme'
+                    break;
+                }
+                default:
+                    break;
             }
             return (
                 <div
@@ -53,6 +55,15 @@ const preview: Preview = {
                 >
                     <Story />
                 </BrowserRouter>
+            );
+        },
+        (Story: StoryFn, context: StoryContext<ReactRenderer, Args>) => {
+
+            return (
+                <StoreProvider
+                >
+                    <Story />
+                </StoreProvider>
             );
         },
     ],

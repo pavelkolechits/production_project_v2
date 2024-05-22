@@ -1,6 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
 import { buildCssLoader } from "../build/loaders/buildCssLoader";
-import { Configuration } from "webpack";
+import { Configuration, DefinePlugin } from "webpack";
 
 
 const mode =  'development'
@@ -27,17 +27,22 @@ const config: StorybookConfig = {
     docs: {
         autodocs: "tag",
     },
+    
     webpackFinal: async (config): Promise<Configuration> => {
-
+        if(config.plugins){
+            config.plugins.push(new DefinePlugin({__IS_DEV__: true}));
+        }
+        
         return  {
 
             ...config,
 
-            resolve:{
+            resolve: {
                 extensions: ['.tsx', '.ts', '.js'],
                 preferAbsolute: true,
                 modules: ['../../src', 'node_modules'],
                 mainFiles: ['index'],
+                
             },
             module: {
                 rules: [buildCssLoader(true), {

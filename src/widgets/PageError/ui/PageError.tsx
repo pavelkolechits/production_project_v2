@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import cls from './Error.module.scss';
 import { Button } from 'shared/ui/Button/Button';
 import { classNames } from 'shared/helpers/classNames/classNames';
+import cls from './PageError.module.scss'
 
 interface PageErrorProps {
     className?: string
