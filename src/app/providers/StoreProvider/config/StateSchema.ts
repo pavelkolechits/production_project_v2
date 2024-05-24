@@ -5,6 +5,7 @@ import {
     StateFromReducersMapObject,
     UnknownAction,
 } from "@reduxjs/toolkit";
+import { AxiosInstance } from "axios";
 import { UserSchema } from "entities/User";
 import { LoginSchema } from "feature/AuthByUsername/model/types/loginSchema";
 
@@ -25,3 +26,12 @@ export interface ReducerManager {
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
     reducerManager: ReducerManager;
   }
+
+export interface ThunkExtraArgs {
+  api: AxiosInstance
+}
+
+export interface ThunkConfig<T> {
+  rejectValue: T;
+  extra: ThunkExtraArgs;
+}

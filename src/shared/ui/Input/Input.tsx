@@ -5,7 +5,7 @@ import cls from './Input.module.scss';
 import { classNames } from 'shared/helpers/classNames/classNames';
 import { Text } from '../Text/Text';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly' >
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly' | 'max' >
 
 interface InputProps extends HTMLInputProps {
     className?: string;
@@ -14,6 +14,7 @@ interface InputProps extends HTMLInputProps {
     placeholder?: string;
     autofocus?: boolean;
     readonly?: boolean;
+    max?: boolean
 }
 
 
@@ -26,6 +27,7 @@ export const Input = memo((props: InputProps) => {
         placeholder,
         autofocus,
         readonly,
+        max,
         ...otherProps
     } = props;
 
@@ -42,7 +44,7 @@ export const Input = memo((props: InputProps) => {
     };
 
     return (
-        <div className={classNames(cls.InputWrap, { [cls.readonly]: readonly }, [])}>
+        <div className={classNames(cls.InputWrap, { [cls.readonly]: readonly, [cls.max]: max }, [])}>
             {placeholder && (
                 <Text className={cls.placeholder} text={placeholder} />
             )}
