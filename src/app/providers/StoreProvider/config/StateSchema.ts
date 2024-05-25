@@ -6,12 +6,14 @@ import {
     UnknownAction,
 } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
+import { ProfileSchema } from "entities/Profile/model/types/profile";
 import { UserSchema } from "entities/User";
 import { LoginSchema } from "feature/AuthByUsername/model/types/loginSchema";
 
 export interface StateSchema {
     user: UserSchema;
     loginForm?: LoginSchema;
+    profile?: ProfileSchema
 }
 
 export type StateSchemaKeys = keyof StateSchema
@@ -34,4 +36,5 @@ export interface ThunkExtraArgs {
 export interface ThunkConfig<T> {
   rejectValue: T;
   extra: ThunkExtraArgs;
+  state: StateSchema
 }
