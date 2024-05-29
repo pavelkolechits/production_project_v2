@@ -4,7 +4,7 @@ import cls from './LoginForm.module.scss'
 import { Input } from "shared/ui/Input/Input"
 import { classNames } from "shared/helpers/classNames/classNames"
 import { useSelector, useStore } from "react-redux"
-import { memo, useCallback, useEffect } from "react"
+import { KeyboardEventHandler, memo, useCallback, useEffect } from "react"
 import { getLoginUsername } from '../../model/selectors/getLoginData';
 import { getLoginPassword } from '../../model/selectors/getLoginData';
 import { getLoginError } from '../../model/selectors/getLoginData';
@@ -15,6 +15,7 @@ import { loginByUsername } from "../../model/servises/loginByUsername/loginByUse
 import { userActions, userReducer } from "entities/User"
 import { ReduxStoreWithManager } from "app/providers/StoreProvider/config/StateSchema"
 import { useAsyncRedusers } from "shared/hooks/useAsyncReducers/useAsyncRedusers"
+import { Text } from "shared/ui/Text/Text" 
 
 
 
@@ -25,7 +26,7 @@ export interface LoginFormProps {
 
 const LoginForm  = (props: LoginFormProps) => {
     const store = useStore() as ReduxStoreWithManager
-    const { className } = props
+    const { className, onSuccess } = props
     const { t } = useTranslation()
     const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
@@ -44,14 +45,30 @@ const LoginForm  = (props: LoginFormProps) => {
     }, [dispatch]);
 
     const onLoginClick = useCallback(async () => {
-        await dispatch(loginByUsername({ username, password }));
-        // if (result.meta.requestStatus === 'fulfilled') {
-        //     onSuccess.?();
-        // 
-    }, [username, password, dispatch]);
+      const result = await dispatch(loginByUsername({ username, password }));
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess?.()
+        }
+    }, [username, password, dispatch, onSuccess]);
+
+    const onLoginEnter = (e: KeyboardEvent) => {
+        if(e.key === 'Enter') {
+            onLoginClick()
+        }
+    }
+
+    document.addEventListener('keydown', onLoginEnter)
+
+    useEffect(() => {
+        return () => {
+            document.removeEventListener('keydown', onLoginEnter)
+        }
+    })
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
+            <Text title={t('Форма авторизации')}/>
+             {error && <Text theme='error' text={t('Неверный логин или пароль')} />}
             <Input
                 autofocus
                 placeholder={t('Введите имя пользователя')}

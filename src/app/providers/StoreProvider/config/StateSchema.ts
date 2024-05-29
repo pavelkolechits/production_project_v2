@@ -6,9 +6,9 @@ import {
     UnknownAction,
 } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
-import { ProfileSchema } from "entities/Profile/model/types/profile";
 import { UserSchema } from "entities/User";
 import { LoginSchema } from "feature/AuthByUsername/model/types/loginSchema";
+import { ProfileSchema } from "feature/EditableProfileCard";
 
 export interface StateSchema {
     user: UserSchema;

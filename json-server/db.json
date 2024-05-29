@@ -25,14 +25,13 @@
     {
       "id": "1",
       "lastname": "asfewr",
-      "age": 465,
-      "currency": "EUR",
+      "age": "30",
+      "currency": "USD",
       "country": "Ukraine",
       "city": "Moscow",
       "username": "admin213",
-      "avatar": "https://avatars.mds.yandex.net/get-zen_doc/3413519/pub_5ff887b2fe4e686f6ae6ba3f_5ff887d7f906b16872a69755/scale_1200",
+      "avatar": "https://img.freepik.com/premium-photo/man-hoodie-stands-front-computer-screen-with-green-numbers-it_927094-96.jpg?size=626&ext=jpg",
       "firstname": "byblik"
     }
   ]
-   
-  }
+}

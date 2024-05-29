@@ -1,10 +1,13 @@
 import { AboutePage } from 'pages/AboutPage'
 import { MainPage } from 'pages/MainPage'
+import { NotFoundPage } from 'pages/NotFoundPage'
 import { ProfilePage } from 'pages/ProfilePage'
 import { type RouteProps } from 'react-router-dom'
-import { AppRoutes, getRouteAbout, getRouteMain, getRouteProfile } from 'shared/consts/router'
+import { AppRoutes, getRouteAbout, getRouteMain, getRouteNotFound, getRouteProfile } from 'shared/consts/router'
 
-type AppRouteProps = RouteProps
+export type AppRouteProps = RouteProps & {
+    authOnly?: boolean
+}
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 
@@ -19,7 +22,12 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     },
     [AppRoutes.PROFILE] : {
         path: getRouteProfile(':id'),
-        element: <ProfilePage />
+        element: <ProfilePage />,
+        authOnly: true
+    },
+    [AppRoutes.NOT_FOUND] : {
+        path: getRouteNotFound(),
+        element: <NotFoundPage />
     }
 
 }

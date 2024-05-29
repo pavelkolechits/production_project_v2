@@ -11,6 +11,7 @@ import { CountrySelect } from 'entities/Country/ui/CountrySelect/CountrySelect';
 import { Profile } from '../model/types/profile';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 
 export const ProfileCardError = () => {
     const { t } = useTranslation();
@@ -66,10 +67,12 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 
     return (
         <VStack
+            justify='center'
             gap="8"
             max
             className={classNames(cls.ProfileCard, mods, [className])}
         >
+           {data?.avatar && <Avatar src={data?.avatar} alt=''/>}
             <Input
                 value={data?.firstname}
                 placeholder={t('Ваше имя')}

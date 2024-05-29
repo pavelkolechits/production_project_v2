@@ -5,3 +5,4 @@ export const getProfileError = (state: StateSchema) => state?.profile?.error || 
 export const getProfileForm = (state: StateSchema) => state?.profile?.formData;
 export const getProfileIsLoading = (state: StateSchema) => state?.profile?.isLoading || false;
 export const getProfileReadonly = (state: StateSchema) => state?.profile?.readonly;
+export const getProfileValidateErrors = (state: StateSchema) => state?.profile?.validateErrors

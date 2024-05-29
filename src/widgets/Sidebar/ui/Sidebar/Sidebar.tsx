@@ -34,7 +34,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 className,
             ])}
         >
-            <div className={cls.links}>
+            <div className={cls.items}>
                 {itemsList}
             </div>
             <Button
