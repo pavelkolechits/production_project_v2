@@ -1,0 +1,1 @@
+export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
