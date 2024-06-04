@@ -13,10 +13,10 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
     args: {
-    title: 'title',
-    text: 'text',
-    theme: 'primary', 
-    align: 'center',
-    size: 'size_l',
+        title: 'title',
+        text: 'text',
+        theme: 'primary',
+        align: 'center',
+        size: 'size_l',
     },
 }

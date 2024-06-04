@@ -2,11 +2,13 @@
     display: flex;
     align-items: center;
     fill: var(--inverted-primary-color);
+    margin-top: 10px;
 }
 
 .link {
     margin-left: 10px;
     opacity: 1;
+    color: var(--inverted-primary-color);
 }
 
 .icon {
@@ -21,23 +23,6 @@
     }
 }
 
-.itemRedesigned {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0 16px;
-    fill: var(--icon-redesigned);
-}
-
-.collapsedRedesigned {
-    padding: 0 16px;
-
-    .link {
-        opacity: 0;
-        width: 0;
-        margin: 0;
-    }
-}
 
 .active {
     background: linear-gradient(89.97deg, rgba(94, 211, 243, 0.3) 1.15%, rgba(94, 211, 243, 0) 99.97%);

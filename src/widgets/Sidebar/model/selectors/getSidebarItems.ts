@@ -5,15 +5,16 @@ import React from 'react';
 import MainIcon from 'shared/assets/icons/main.svg';
 import AboutIcon from 'shared/assets/icons/about.svg';
 import ProfileIcon from 'shared/assets/icons/profile.svg';
-import ArticlesIcon from 'shared/assets/icons/articles.svg';
 import {
-    getRouteAbout, getRouteMain, getRouteProfile,
+    getRouteAbout, getRouteArticles, getRouteMain, getRouteProfile,
 } from 'shared/consts/router';
 import { SidebarItemType } from '../types/sidebar';
+import ArticlesIcon from 'shared/assets/icons/article.svg'
 
 export const getSidebarItems = createSelector(
     getUserAuthData,
     (userData) => {
+
         const SidebarItemsList: SidebarItemType[] = [
             {
                 path: getRouteMain(),
@@ -26,6 +27,7 @@ export const getSidebarItems = createSelector(
                 text: 'О сайте',
             },
         ];
+
         if (userData) {
             SidebarItemsList.push(
                 {
@@ -34,6 +36,12 @@ export const getSidebarItems = createSelector(
                     text: 'Профиль',
                     authOnly: true,
                 },
+                {
+                    path: getRouteArticles(),
+                    Icon: ArticlesIcon,
+                    text: 'Статьи',
+                    authOnly: true
+                }
             );
         }
         return SidebarItemsList;
