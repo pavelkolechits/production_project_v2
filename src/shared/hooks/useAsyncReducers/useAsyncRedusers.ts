@@ -9,14 +9,14 @@ export type ReducerList = {
 }
 
 interface UseAsyncReducersProps {
-        reducers: ReducerList;
-        removeAfterUnmount?: boolean;
-    
+    reducers: ReducerList;
+    removeAfterUnmount?: boolean;
+
 }
 
-export function useAsyncRedusers (props: UseAsyncReducersProps) {
+export function useAsyncRedusers(props: UseAsyncReducersProps) {
 
-    const {reducers, removeAfterUnmount} = props
+    const { reducers, removeAfterUnmount = true } = props
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useAppDispatch()
 
@@ -37,6 +37,6 @@ export function useAsyncRedusers (props: UseAsyncReducersProps) {
                 });
             }
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 }

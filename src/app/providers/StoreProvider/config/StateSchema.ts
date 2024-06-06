@@ -8,14 +8,18 @@ import {
 import { AxiosInstance } from "axios";
 import { ArticleDetailsSchema } from "entities/Article";
 import { UserSchema } from "entities/User";
+import { AddNewCommentSchema } from "feature/AddNewComment/model/types/addNewComment";
 import { LoginSchema } from "feature/AuthByUsername/model/types/loginSchema";
 import { ProfileSchema } from "feature/EditableProfileCard";
+import { ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
 
 export interface StateSchema {
     user: UserSchema;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
-    articleDetails?: ArticleDetailsSchema
+    articleDetails?: ArticleDetailsSchema;
+    addNewComment?: AddNewCommentSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type StateSchemaKeys = keyof StateSchema
