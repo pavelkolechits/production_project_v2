@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { classNames } from "shared/helpers/classNames/classNames";
 import cls from './ArticleList.module.scss'
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
+import { ArticleView } from "../../model/consts/consts";
 
 
 interface ArticleListProps {
@@ -11,6 +12,7 @@ interface ArticleListProps {
     articles: Article[];
     isLoading?: boolean;
     target?: HTMLAttributeAnchorTarget;
+    view: ArticleView
 }
 
 // const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
@@ -23,7 +25,7 @@ interface ArticleListProps {
 export const ArticleList = (props: ArticleListProps) => {
     const { t } = useTranslation();
     const {
-        className, articles, isLoading,  target,
+        className, articles, isLoading,  target, view
     } = props;
 
     return (
@@ -36,6 +38,7 @@ export const ArticleList = (props: ArticleListProps) => {
         >
             {articles.map((item) => (
                 <ArticleListItem
+                    view={view}
                     article={item}
                     target={target}
                     key={item.id}

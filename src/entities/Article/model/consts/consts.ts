@@ -10,3 +10,9 @@ export enum ArticleBlockType {
     IMAGE = 'IMAGE',
     TEXT = 'TEXT'
 }
+
+export enum ArticleView {
+    LIST = 'LIST',
+    TILE = 'TILE'
+}
+
